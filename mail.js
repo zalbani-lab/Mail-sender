@@ -26,7 +26,10 @@ const sendMail = (email, subject, text, cb) => {
         to: process.env.EMAIL,
         cc: 'alban.pierson@ynov.com',
         subject,
-        text
+        text,
+        attachments:[
+            { filename: 'picture.png', path: './picture.png'}
+        ]
     };
 
     transporter.sendMail(mailOptions, function (err, data){
