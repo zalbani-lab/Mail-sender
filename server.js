@@ -1,7 +1,7 @@
 const express = require('express');
 
 const app = express();
-const PORT = 3008;
+const PORT = 3000;
 const path = require('path');
 
 const sendMail = require('./mail.js');
