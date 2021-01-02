@@ -28,7 +28,10 @@
 $ npm install
 
 # serve with hot reload at localhost:3000
-$ node index.js
+$ node server.js
+
+# Care about gmail security
+https://myaccount.google.com/lesssecureapps?pli=1&rapt=AEjHL4Pgi8t7xlaT94vpfRfG_V_4TCVt_r_ZtqanQJdkn-l1dMIvjdoDJe6lJWhkjA51yzxYEOvxDvJdApSIhg8BAkhLCIl6Gg
 ```
 
 ## Release History

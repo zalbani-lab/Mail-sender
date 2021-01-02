@@ -14,12 +14,14 @@ app.use(express.urlencoded({
 app.use(express.json());
 
 app.post('/email', (req,res) =>{
-    console.log('Data :', req.body)
-    const {email, subject, text} = req.body;
-    sendMail(email, subject, text, function (err, data){
+    const {email, subject} = req.body;
+    sendMail(email, subject, function (err, data){
         if(err){
+            console.log('Fail, email not send :', req.body)
+            console.log(err)
             res.status(500).json({ message: 'Internal Error'});
         } else{
+            console.log('Email send successfully :', req.body)
             res.json({ message: 'email sent'});
         }
     });

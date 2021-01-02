@@ -2,7 +2,7 @@
 require('dotenv').config();
 
 const nodemailer = require('nodemailer');
-
+const fs = require('fs');
 const auth ={
     auth:{
         api_key:'',
@@ -20,13 +20,14 @@ const transporter = nodemailer.createTransport({
    },
 });
 
-const sendMail = (email, subject, text, cb) => {
+const sendMail = (email, subject, cb) => {
+    const html = fs.readFileSync("template/test.html","utf-8");
     const mailOptions = {
-        from: email,
-        to: process.env.EMAIL,
+        from: process.env.EMAIL,
+        to: email,
         cc: 'alban.pierson@ynov.com',
         subject,
-        text,
+        html: html,
         attachments:[
             { filename: 'picture.png', path: './picture.png'}
         ]
