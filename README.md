@@ -19,9 +19,12 @@
 ## Built With
 
 * [Nodemailer](https://nodemailer.com/about/) - Nodemailer is a module for Node.js to send emails.
+* [Mustache](https://github.com/mustache/mustache.github.com) - Logic-less templates.
 
 
 ## Installation
+This app requires a specific google authorisation
+Follow this link to autorise : [https://myaccount.google.com/lesssecureapps](https://myaccount.google.com/lesssecureapps)
 
 ```bash
 # install dependencies
@@ -29,10 +32,8 @@ $ npm install
 
 # serve with hot reload at localhost:3000
 $ node server.js
-
-# Care about gmail security
-https://myaccount.google.com/lesssecureapps?pli=1&rapt=AEjHL4Pgi8t7xlaT94vpfRfG_V_4TCVt_r_ZtqanQJdkn-l1dMIvjdoDJe6lJWhkjA51yzxYEOvxDvJdApSIhg8BAkhLCIl6Gg
 ```
+
 
 ## Release History
 

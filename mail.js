@@ -2,13 +2,8 @@
 require('dotenv').config();
 
 const nodemailer = require('nodemailer');
+const mustache = require('mustache');
 const fs = require('fs');
-const auth ={
-    auth:{
-        api_key:'',
-        domain:''
-    }
-}
 
 
 // Transporter
@@ -22,12 +17,15 @@ const transporter = nodemailer.createTransport({
 
 const sendMail = (email, subject, cb) => {
     const html = fs.readFileSync("template/test.html","utf-8");
+    const view = {test:"Coucou je viens de la variable"}
+    const output = mustache.render(html, view);
+
     const mailOptions = {
         from: process.env.EMAIL,
         to: email,
         cc: 'alban.pierson@ynov.com',
         subject,
-        html: html,
+        html: output,
         attachments:[
             { filename: 'picture.png', path: './picture.png'}
         ]
