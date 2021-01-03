@@ -31,13 +31,9 @@ const sendMail = (email, subject, cb) => {
         ]
     };
 
-    transporter.sendMail(mailOptions, function (err, data){
-        if(err) {
-            cb(err, null);
-        }else{
-            cb(null, data);
-        }
-    })
+    transporter.sendMail(mailOptions)
+        .then( response =>cb(null, response))
+        .catch(error =>cb(error, null))
 }
 
 module.exports = sendMail;

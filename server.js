@@ -1,37 +1,47 @@
-const express = require('express');
+const http = require('http');
+const app = require('./app');
 
-const app = express();
-const PORT = 3000;
-const path = require('path');
+const normalizePort = val => {
+    const port = parseInt(val, 10);
 
-const sendMail = require('./mail.js');
+    if (isNaN(port)) {
+        return val;
+    }
+    if (port >= 0) {
+        return port;
+    }
+    return false;
+};
+const port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
 
+const errorHandler = error => {
+    if (error.syscall !== 'listen') {
+        throw error;
+    }
+    const address = server.address();
+    const bind = typeof address === 'string' ? 'pipe ' + address : 'port: ' + port;
+    switch (error.code) {
+        case 'EACCES':
+            console.error(bind + ' requires elevated privileges.');
+            process.exit(1);
+            break;
+        case 'EADDRINUSE':
+            console.error(bind + ' is already in use.');
+            process.exit(1);
+            break;
+        default:
+            throw error;
+    }
+};
 
-// Data parsing
-app.use(express.urlencoded({
-    extended: false
-}))
-app.use(express.json());
+const server = http.createServer(app);
 
-app.post('/email', (req,res) =>{
-    const {email, subject} = req.body;
-    sendMail(email, subject, function (err, data){
-        if(err){
-            console.log('Fail, email not send :', req.body)
-            console.log(err)
-            res.status(500).json({ message: 'Internal Error'});
-        } else{
-            console.log('Email send successfully :', req.body)
-            res.json({ message: 'email sent'});
-        }
-    });
-})
-
-
-app.get('/', (req, res)=> {
-    res.sendFile(path.join(__dirname, 'views', 'index.html'));
+server.on('error', errorHandler);
+server.on('listening', () => {
+    const address = server.address();
+    const bind = typeof address === 'string' ? 'pipe ' + address : 'port ' + port;
+    console.log('Listening on ' + bind);
 });
 
-app.listen(PORT, () =>{
-    console.log('Server is starting on PORT' + PORT);
-});
+server.listen(port);
