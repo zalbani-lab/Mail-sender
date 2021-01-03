@@ -1,10 +1,6 @@
-
 require('dotenv').config();
 
 const nodemailer = require('nodemailer');
-const mustache = require('mustache');
-const fs = require('fs');
-
 
 // Transporter
 const transporter = nodemailer.createTransport({
@@ -15,25 +11,24 @@ const transporter = nodemailer.createTransport({
    },
 });
 
-const sendMail = (email, subject, cb) => {
-    const html = fs.readFileSync("template/test.html","utf-8");
-    const view = {test:"Coucou je viens de la variable"}
-    const output = mustache.render(html, view);
+const sendMail = (email, subject, content, res, contentType = 'text') => {
 
     const mailOptions = {
         from: process.env.EMAIL,
         to: email,
         cc: 'alban.pierson@ynov.com',
         subject,
-        html: output,
-        attachments:[
-            { filename: 'picture.png', path: './picture.png'}
-        ]
     };
 
+    switch (contentType){
+        case 'text':  mailOptions['text'] = content; break;
+        case 'html':  mailOptions['html'] = content; break;
+        default: console.log('erreur type non connu :' + contentType)
+    }
+
     transporter.sendMail(mailOptions)
-        .then( response =>cb(null, response))
-        .catch(error =>cb(error, null))
+        .then(res.status(200).json({ message: 'Mail send successfully !'}))
+        .catch(error => res.status(500).json({ message: error}))
 }
 
 module.exports = sendMail;
