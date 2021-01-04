@@ -11,24 +11,39 @@ const transporter = nodemailer.createTransport({
    },
 });
 
-const sendMail = (email, subject, content, res, contentType = 'text') => {
-
+const sendMail = async (email, subject, content, contentType = 'text') => {
+    let result;
     const mailOptions = {
         from: process.env.EMAIL,
         to: email,
-        cc: 'alban.pierson@ynov.com',
+        // cc: 'alban.pierson@ynov.com',
         subject,
     };
 
-    switch (contentType){
-        case 'text':  mailOptions['text'] = content; break;
-        case 'html':  mailOptions['html'] = content; break;
-        default: console.log('erreur type non connu :' + contentType)
+    switch (contentType) {
+        case 'text':
+            mailOptions['text'] = content;
+            break;
+        case 'html':
+            mailOptions['html'] = content;
+            break;
+        default:
+            console.log('erreur type non connu :' + contentType)
     }
-
-    transporter.sendMail(mailOptions)
-        .then(res.status(200).json({ message: 'Mail send successfully !'}))
-        .catch(error => res.status(500).json({ message: error}))
+    await transporter.sendMail(mailOptions)
+        .then(() => {
+            result = 'success'
+        })
+        .catch(error => {
+            result = error
+        })
+    return new Promise(function (resolve, reject) {
+        if ( result === 'success') {
+            resolve(result);
+        } else {
+            reject(result);
+        }
+    });
 }
 
 module.exports = sendMail;
