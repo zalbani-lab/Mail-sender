@@ -31,7 +31,7 @@ Follow this link to autorise : [https://myaccount.google.com/lesssecureapps](htt
 $ npm install
 
 # serve with hot reload at localhost:3000
-$ node server.js
+$ nodemon server.js
 ```
 
 
