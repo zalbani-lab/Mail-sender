@@ -1,5 +1,7 @@
 const mustache = require('mustache');
 const fs = require('fs');
+// const path = require('path')
+
 
 const sendMail = require('../functions/sendMail');
 
@@ -49,4 +51,54 @@ exports.sendMailsToList = (req, res) => {
     }else{
         res.status(500).json({ message: "Body not admissible" })
     }
+}
+
+exports.sendMailsToListWithTemplate = (req, res) => {
+    let successCount = 0;
+    let errorCount = 0;
+    let promiseList = [];
+
+    const {list, template, subject, attachmentFile, attachmentRename} = req.body;
+    const attachmentFilePath = 'mail_data/attachments/'+ attachmentFile;
+    let fileName = attachmentFile;
+
+    const rawData = fs.readFileSync('mail_data/list/'+ list +'.json',"utf-8");
+    const jsonList = JSON.parse(rawData);
+
+
+
+    const htmlTemplate = fs.readFileSync('mail_data/template/'+ template +'.html',"utf-8");
+
+
+
+    for(let i=0; i < jsonList.length; i++){
+        if(attachmentRename){
+
+            const variablesToReplace = req.body.attachmentRenameOptions.variablesReplace;
+            const variablesToReplaceTo = req.body.attachmentRenameOptions.variablesReplaceTo;
+
+            variablesToReplace === undefined  || variablesToReplace === null || variablesToReplaceTo === undefined  || variablesToReplaceTo === null ? res.status(500).json({message: 'variablesReplace or variablesToReplaceTo undefined' }) : null;
+            !Array.isArray(variablesToReplace) || !Array.isArray(variablesToReplaceTo) ? res.status(500).json({message: 'variablesReplace or variablesToReplaceTo is not an array' }) : null;
+            variablesToReplace.length === 0 || variablesToReplaceTo.length === 0 ? res.status(500).json({message: 'Invalid number of argument' }) : null;
+            variablesToReplace.length !== variablesToReplaceTo.length ? res.status(500).json({message: 'You must have same amont of argument into variablesReplace and variablesReplaceTo' }) : null;
+
+            for(let j = 0; j < variablesToReplace.length; j++){
+                const prepareForReplace = '$'+variablesToReplace[j]
+                fileName = fileName.replace(prepareForReplace, jsonList[i].variables[variablesToReplaceTo[j].toString()])
+            }
+        }
+
+        const attachmentOption =
+            {
+                filename: fileName,
+                path: attachmentFilePath
+            }
+        const output = mustache.render(htmlTemplate, jsonList[i].variables );
+        promiseList.push(sendMail(jsonList[i].email, subject, output,'html', attachmentOption)
+            .then( result => result === 'success' ? successCount += 1 : errorCount += 1)
+            .catch( error => { console.log(error); errorCount += 1 }))
+    }
+    Promise.all(promiseList)
+        .then(() => res.status(200).json({message: successCount + ' mails send successfully |' + errorCount + ' mails not send'}))
+        .catch(error =>  console.log("Error : ", error));
 }

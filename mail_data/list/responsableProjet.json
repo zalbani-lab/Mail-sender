@@ -1,12 +1,10 @@
 [
   {
-    "name": "Pierson",
-    "surname" : "Alban",
-    "email" : "alban.pierson@ynov.com"
-  },
-  {
-    "name": "Demarche",
-    "surname" : "Anais",
-    "email" : "anais.demarche1@gmail.com"
+    "email" : "alban.pierson@ynov.com",
+    "variables": {
+      "name": "Pierson",
+      "surname" : "Alban",
+      "test" : "ma premiere varibale"
+    }
   }
 ]
