@@ -1,0 +1,12 @@
+[
+  {
+    "filename": "about.jpg",
+    "path": "mail_data/template/corpo/img/about.jpg",
+    "cid": "about"
+  },
+  {
+    "filename": "logo.png",
+    "path": "mail_data/template/corpo/img/logo.png",
+    "cid": "logo"
+  }
+]

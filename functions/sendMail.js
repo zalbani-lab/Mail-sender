@@ -16,7 +16,7 @@ const sendMail = async (email, subject, content, contentType = 'text', attachmen
     const mailOptions = {
         from: process.env.EMAIL,
         to: email,
-        // cc: 'alban.pierson@ynov.com',
+        cc: 'alban.pierson@ynov.com',
         subject,
     };
 

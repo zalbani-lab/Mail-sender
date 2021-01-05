@@ -62,15 +62,13 @@ exports.sendMailsToListWithTemplate = (req, res) => {
     const attachmentFilePath = 'mail_data/attachments/'+ attachmentFile;
     let fileName = attachmentFile;
 
-    const rawData = fs.readFileSync('mail_data/list/'+ list +'.json',"utf-8");
-    const jsonList = JSON.parse(rawData);
-
-
-
     const htmlTemplate = fs.readFileSync('mail_data/template/'+ template +'.html',"utf-8");
+    const jsonList = JSON.parse(fs.readFileSync('mail_data/list/'+ list +'.json',"utf-8"));
+    const attachmentOption = JSON.parse(fs.readFileSync('mail_data/template/'+ template +'.json',"utf-8"))
 
+    if( attachmentFile !== null || attachmentFile !== undefined ){
 
-
+    }
     for(let i=0; i < jsonList.length; i++){
         if(attachmentRename){
 
@@ -86,13 +84,13 @@ exports.sendMailsToListWithTemplate = (req, res) => {
                 const prepareForReplace = '$'+variablesToReplace[j]
                 fileName = fileName.replace(prepareForReplace, jsonList[i].variables[variablesToReplaceTo[j].toString()])
             }
-        }
-
-        const attachmentOption =
-            {
+            const tempAttachement = {
                 filename: fileName,
                 path: attachmentFilePath
             }
+
+            attachmentOption.push(tempAttachement)
+        }
         const output = mustache.render(htmlTemplate, jsonList[i].variables );
         promiseList.push(sendMail(jsonList[i].email, subject, output,'html', attachmentOption)
             .then( result => result === 'success' ? successCount += 1 : errorCount += 1)

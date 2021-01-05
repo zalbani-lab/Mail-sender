@@ -1,10 +1,29 @@
 [
   {
-    "email" : "alban.pierson@ynov.com",
-    "variables": {
-      "name": "Pierson",
-      "surname" : "Alban",
-      "test" : "ma premiere varibale"
-    }
+    "email" : "alban.pierson@ynov.com"
+  },
+  {
+    "email" : "theo.schmidt@ynov.com"
+  },
+  {
+    "email" : "jeremy.surieux@ynov.com"
+  },
+  {
+    "email" : "capdepon.alexis@ynov.com"
+  },
+  {
+    "email" : "miki.namsrai@ynov.com"
+  },
+  {
+    "email" : "baptiste.crouzet@ynov.com"
+  },
+  {
+    "email" : "anthony.dubuis@ynov.com"
+  },
+  {
+    "email" : "baptiste.dumont@ynov.com"
+  },
+  {
+    "email" : "adrien.cabaud@ynov.com"
   }
 ]

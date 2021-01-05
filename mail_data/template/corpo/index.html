@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+    <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+    <meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
+    <title></title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+    <!-- CSS Reset : BEGIN -->
+<style>
+html,
+body {
+    margin: 0 auto !important;
+    padding: 0 !important;
+    height: 100% !important;
+    width: 100% !important;
+    background: #f1f1f1;
+}
+
+/* What it does: Stops email clients resizing small text. */
+* {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* What it does: Centers email on Android 4.4 */
+div[style*="margin: 16px 0"] {
+    margin: 0 !important;
+}
+
+/* What it does: Stops Outlook from adding extra spacing to tables. */
+table,
+td {
+    mso-table-lspace: 0pt !important;
+    mso-table-rspace: 0pt !important;
+}
+
+/* What it does: Fixes webkit padding issue. */
+table {
+    border-spacing: 0 !important;
+    border-collapse: collapse !important;
+    table-layout: fixed !important;
+    margin: 0 auto !important;
+}
+
+/* What it does: Uses a better rendering method when resizing images in IE. */
+img {
+    -ms-interpolation-mode:bicubic;
+}
+
+/* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links should be inline. */
+a {
+    text-decoration: none;
+}
+
+/* What it does: A work-around for email clients meddling in triggered links. */
+*[x-apple-data-detectors],  /* iOS */
+.unstyle-auto-detected-links *,
+.aBn {
+    border-bottom: 0 !important;
+    cursor: default !important;
+    color: inherit !important;
+    text-decoration: none !important;
+    font-size: inherit !important;
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+}
+
+/* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
+.a6S {
+    display: none !important;
+    opacity: 0.01 !important;
+}
+
+/* What it does: Prevents Gmail from changing the text color in conversation threads. */
+.im {
+    color: inherit !important;
+}
+
+/* If the above doesn't work, add a .g-img class to any image in question. */
+img.g-img + div {
+    display: none !important;
+}
+
+/* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+/* Create one of these media queries for each additional viewport size you'd like to fix */
+
+/* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
+@media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+    u ~ div .email-container {
+        min-width: 320px !important;
+    }
+}
+/* iPhone 6, 6S, 7, 8, and X */
+@media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+    u ~ div .email-container {
+        min-width: 375px !important;
+    }
+}
+/* iPhone 6+, 7+, and 8+ */
+@media only screen and (min-device-width: 414px) {
+    u ~ div .email-container {
+        min-width: 414px !important;
+    }
+}
+
+</style>
+
+<!-- CSS Reset : END -->
+
+<!-- Progressive Enhancements : BEGIN -->
+<style>
+
+  .primary{
+	background: #0d0cb5;
+}
+.bg_white{
+	background: #ffffff;
+}
+.bg_light{
+	background: #fafafa;
+}
+.bg_black{
+	background: #000000;
+}
+.email-section{
+	padding:2.5em;
+}
+
+
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Poppins', sans-serif;
+	color: #000000;
+	margin-top: 0;
+}
+
+body{
+	font-family: 'Poppins', sans-serif;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 1.8;
+	color: rgba(0,0,0,.4);
+}
+
+a{
+	color: #0d0cb5;
+}
+
+table{
+}
+/*LOGO*/
+
+.logo h1{
+	margin: 0;
+}
+.logo h1 a{
+	color: #000000;
+	font-size: 20px;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-family: 'Poppins', sans-serif;
+}
+
+/*HERO*/
+.hero{
+	position: relative;
+	z-index: 0;
+}
+.hero .icon a{
+	display: block;
+	width: 60px;
+	margin: 0 auto;
+}
+.hero .text{
+	color: rgba(255,255,255,.8);
+}
+.hero .text h2{
+	color: #ffffff;
+	font-size: 30px;
+	margin-bottom: 0;
+}
+
+
+/*HEADING SECTION*/
+.heading-section{
+}
+.heading-section h2{
+	color: #000000;
+	font-size: 20px;
+	margin-top: 0;
+	line-height: 1.4;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+.heading-section .subheading{
+	margin-bottom: 20px !important;
+	display: inline-block;
+	font-size: 13px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: rgba(0,0,0,.4);
+	position: relative;
+}
+
+.heading-section-white{
+	color: rgba(255,255,255,.8);
+}
+.heading-section-white h2{
+	padding-bottom: 0;
+}
+.heading-section-white h2{
+	color: #ffffff;
+}
+
+
+/*SERVICES*/
+.services{
+	background: rgba(0,0,0,.03);
+}
+.text-services{
+	padding: 10px 10px 0;
+	text-align: left;
+}
+.text-services h3{
+    text-align: center;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+/*FOOTER*/
+
+.footer{
+	color: rgba(255,255,255,.5);
+
+}
+.footer .heading{
+	color: #ffffff;
+	font-size: 20px;
+}
+.footer ul{
+	margin: 0;
+	padding: 0;
+}
+.footer ul li{
+	list-style: none;
+	margin-bottom: 10px;
+}
+.footer ul li a{
+	color: rgba(255,255,255,1);
+}
+
+
+@media screen and (max-width: 500px) {
+
+	.text-services{
+		padding-left: 0;
+		padding-right: 20px;
+		text-align: left;
+	}
+
+}
+</style>
+
+
+</head>
+
+<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #222222;">
+    <div style="max-width: 800px; margin: 0 auto;" class="email-container">
+    	<!-- BEGIN BODY -->
+      <table align="center" width="100%" style="margin: auto;">
+      	<tr>
+          <td valign="top" class="bg_white" style="padding: 1em 2.5em;">
+          	<table width="100%">
+          		<tr>
+          			<td width="40%" class="logo" style="text-align: left;">
+                        <img src="cid:logo" style="width: 100%; max-width: 80px; padding: 0 10px; height: auto; margin: auto; display: inline-block;">
+                        <h1 style="display: inline-block;vertical-align: top; line-height: 1.2em">Incubateur <br/>Web</h1>
+			        </td>
+          		</tr>
+          	</table>
+          </td>
+	      </tr><!-- end tr -->
+          <tr>
+            <td valign="middle" class="hero bg_white" style="background-image: url('https://raw.githubusercontent.com/ColorlibHQ/email-templates/master/7/images/bg_2.jpg'); background-size: cover; height: 300px;">
+            <table>
+            	<tr>
+            		<td style="background-color: rgba(0,0,0,0.3); padding-top: 5px">
+            			<div class="text" style="padding: 0 3em; text-align: center; color: white; text-shadow: 1px 1px 2px #000000;">
+            				<h2 style="color: white; text-shadow: 1px 1px 2px #000000;">Bonne année&nbsp;!</h2>
+            				<p>Je vous souhaites  á tous une merveilleuse année 2021&nbsp;!
+                                J'espère que vous avez pu profiter des fetes pour vous reposez afin de repartir au taquet pour cette nouvelle année&nbsp;!
+                            </p>
+                            <p>Elle va commencer sur les chapeaux de roue avec les <b>Ydays</b>&nbsp;!</p>
+            			</div>
+            		</td>
+            	</tr>
+            </table>
+          </td>
+	      </tr><!-- end tr -->
+	      <tr>
+		      <td class="bg_white">
+		        <table width="100%">
+		          <tr>
+		            <td class="bg_white email-section">
+		            	<div class="heading-section" style="text-align: center; padding: 0 30px;">
+		              	<h2>La notation</h2>
+		              	<p>Sans transition, on attaque direct ! Vous trouverez dans ce mail l'ensemble des infos / documents dont vous avez besoin pour votre premiere soutenance.</p>
+		            	</div>
+		            	<table width="100%">
+		            		<tr>
+		            			<td valign="top" width="100%" style="padding-top: 20px;" class="services"/>
+                                    <table width="100%">
+                                        <tr>
+                                            <td class="text-services">
+                            	                <h3>Controle continue - 31 Janvier</h3>
+                                                <p>Cet partie c'est tout <b>Antoine qui gere</b> il devrait faire passer dans la semaine des formulaires qui remplaceront les grilles exel de controle continue.</p>
+                                                <p>Vous recevrai dans un premier temps votre grille d'autoévaluation puis la grille d'évaluation de vos collaborateur ! (enfin j'imagine que c'est ce qu'il va se passer) </p>
+                                                <p>Je vous tient au courant des que j'en sais plus </p>
+                                                <p><a href="https://auvencecom.sharepoint.com/teams/ydayslyon/SitePages/Comprends-le-contr%C3%B4le-continu.aspx" style="padding: 5px 20px; display: inline-block; border-radius: 5px; background: #0d0cb5; color: #ffffff;">Voir la doc</a></p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top" width="100%" style="padding-top: 20px; background: rgba(0,0,0,.08);" class="services">
+                                    <table width="100%">
+                                        <tr>
+                                            <td class="text-services">
+                                                <h3>Grille de soutenance + livrable - 21 Janvier</h3>
+                                                <p>Ces deux documents sont une part importante de votre premiere soutenance, ne les négliger pas ils conditionnent votre réussite</p>
+                                                <p>Vous trouverez en piece jointe de ce mail <b>une grille vierge</b> ainsi qu'un <i>template</i> rédige par mes soins. Prenez le temps de tout lire et posez moi des questions si vous en avez ^^</p>
+                                                <p>Dernière petite chose pour cette partie, le livrable sera lu en amont de la soutenance par les jurés. Celui-ci doit donc etre sommaire, ne rentrez pas trop dans le detail !</p>
+                                                <p><a href="https://auvencecom.sharepoint.com/teams/ydayslyon/SitePages/Comprends-la-soutenance.aspx" style="padding: 5px 20px; display: inline-block; border-radius: 5px; background: #0d0cb5; color: #ffffff;">Voir la doc</a></p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top" width="100%" style="padding-top: 20px;" class="services">
+                                    <table width="100%">
+                                        <tr>
+                                            <td class="text-services">
+                                                <h3>Soutenance - 4 Février </h3>
+                                                <p>Comme vous le savez, la soutenance c'est <b>30 min oral | 10 minutes de questions</b> devant un jury de 4~5 personnes.</p>
+                                                <p>Preparez bien votre soutenance, pensez aussi au fait que la soutenance a des chances de se dérouler á distance (Numérotez bien les slides, notez qui parle sur la slide, essayez de rythmer etc). </p>
+                                                <p><a href="https://auvencecom.sharepoint.com/teams/ydayslyon/SitePages/Comprends-la-soutenance.aspx" style="padding: 5px 20px; display: inline-block; border-radius: 5px; background: #0d0cb5; color: #ffffff;">Voir la doc</a></p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top" width="100%" style="padding-top: 20px; background: rgba(0,0,0,.08);" class="services">
+                                    <table width="100%">
+                                        <tr>
+                                            <td class="text-services">
+                                                <h3>Rendu des notes - 5 Février </h3>
+                                                <p>Je vous enverrai les résultats de votre soutenance ainsi que les grilles de controle continue</p>
+                                                <p>Vous procederez ensuite ce jour au <b>peergrading</b> afin de conclure ce premier semestre de Ydays</p>
+                                                <p><a href="https://auvencecom.sharepoint.com/teams/ydayslyon/SitePages/Comprends-le--peergrading-.aspx" style="padding: 5px 20px; display: inline-block; border-radius: 5px; background: #0d0cb5; color: #ffffff;">Voir la doc</a></p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+		            </td>
+		          </tr>
+                  <tr>
+                    <td class="primary email-section" style="text-align:center;">
+                        <div class="heading-section heading-section-white">
+                            <h2>Infos supplémentaires</h2>
+                            <p>Je vais editer le message dans les annonces afin d'ajouter l'ensemble des infos presentes dans ce mail ! :D </p>
+                            <p>Des exemples de ce qu'il y a ete fait l'année dernière pour les premieres soutenances sont á votre disposition </p>
+                            <p><a href="https://drive.google.com/drive/folders/1GZNdgtrJ3WxNXr7XCJTFfAc4OS5wlXmc?usp=sharing " style=" padding: 5px 15px; display: inline-block; border-radius: 5px; background: transparent; border: 1px solid #fff; color: #fff;">Voir les examples</a></p>
+                        </div>
+                    </td>
+                  </tr><!-- end: tr -->
+		          <tr>
+		            <td class="bg_light email-section" style="width: 100%;">
+		            	<table width="100%">
+		            		<tr>
+		            			<td valign="middle" width="50%">
+                                    <table width="100%">
+                                        <tr>
+                                            <td>
+                                                <img src="cid:about" style="width: 100%; max-width: 600px; height: auto; margin: auto; display: block;">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td valign="middle" width="50%">
+                                    <table width="100%">
+                                        <tr>
+                                            <td class="text-services" style="text-align: left; padding-left:25px;">
+                            	                <div class="heading-section">
+                                                    <h2>Serious Business</h2>
+                                                    <p><b>ALEXIS ! Je te vois c'est ici que ca se passe ! </b></p>
+                                                    <p>J'aimerais que vous me fassiez chacun pour vos projets un listing des liens et outils que vous utilisez afin que je les ai sous le coude (et m'inviter si nécessaire ^^)! </p>
+                                                    <p>Lors de la soutenance, on va vous demander <i>l'etat d'avancement</i> de votre projet, avec des chiffres, des graphiques, des estimations etc. Preparez donc bien cette partie avec soit un <b>Gant</b>soit un <b>Burndown chart</b> ou les deux xD.
+                                                        J'aimerais aussi que vous me communiquiez ces elements (j'en ai besoin pour ma soutenance)
+                                                    </p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+		            	</table>
+                        <table width="100%">
+                            <tr>
+                                <td width="100%">
+                                    <p>
+                                        Voila j'ai fini xD Comme on dit chez moi : <b>Force et honneur !</b>
+                                    </p>
+                                    <p><b>Nb :</b> je suis sure que vu que ce texte est á la fin du mail personne va le lire :P <b>SUPER</b>, je vous aime comme meme ❤.</p>
+                                </td>
+                            </tr>
+                        </table>
+		            </td>
+		          </tr><!-- end: tr -->
+		        </table>
+		      </td>
+		    </tr><!-- end:tr -->
+      <!-- 1 Column Text + Button : END -->
+      </table>
+      <table align="center" width="100%" style="margin: auto;">
+      	<tr>
+          <td valign="middle" class="bg_black footer email-section">
+            <table>
+            	<tr>
+                <td valign="top" width="50%" style="padding-top: 20px;">
+                  <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                    <tr>
+                      <td style="text-align: left; padding-left: 5px; padding-right: 5px;">
+                      	<h3 class="heading">Information de contacts</h3>
+                      	<ul>
+                            <li><span class="text">Alban Pierson</span></li>
+                            <li><span class="text">Qui peut s'assoir a ma table et dire je suis un meilleur facilitateur que toi ?</span></li>
+                            <li><span class="text">T. 06 47 22 83 20</span></a></li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                <td valign="top" width="50%" style="padding-top: 20px;">
+                  <table width="100%">
+                    <tr>
+                      <td style="text-align: left; padding-left: 10px;">
+                      	<h3 class="heading">Liens utiles</h3>
+                      	<ul>
+					        <li><a href="https://auvencecom.sharepoint.com/teams/ydayslyon">Wiki</a></li>
+					        <li><a href="https://auvencecom.sharepoint.com/teams/ydayslyon/SitePages/Comprends-la-soutenance.aspx">Soutenance</a></li>
+					        <li><a href="https://forms.gle/ugCLiivZpRnKdaBA8  ">Formulaire anonyme</a></li>
+					        <li><a href="https://www.ynov.com/campus/lyon/">Ynov</a></li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr><!-- end: tr -->
+      </table>
+    </div>
+</body>
+</html>
